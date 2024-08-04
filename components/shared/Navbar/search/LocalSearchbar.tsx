@@ -21,7 +21,7 @@ const LocalSearchbar = ({
 }: CustomInputProps) => {
   return (
     <div
-      className={`background-light800_darkgradient px-4 flex min-h-[56px] grow items-center gap-4 rounded-[10px] ${otherClasses}`}
+      className={`background-light800_darkgradient w-full px-4 flex min-h-[56px] grow items-center gap-4 rounded-[10px] ${otherClasses}`}
     >
       {iconPosition === "left" && (
         <Image
