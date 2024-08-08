@@ -19,7 +19,6 @@ export async function getUserById(params : any) {
     }
 }
 
-
 export async function createUser(userData : CreateUserParams) {
     try {
         connectToDatabase()
@@ -31,7 +30,6 @@ export async function createUser(userData : CreateUserParams) {
         throw error
     }
 }
-
 
 export async function updateUser(params : UpdateUserParams) {
     try {
@@ -48,8 +46,6 @@ export async function updateUser(params : UpdateUserParams) {
     }
 }
 
-
-
 export async function deleteUser(params : DeleteUserParams) {
     try {
         connectToDatabase()
@@ -64,7 +60,7 @@ export async function deleteUser(params : DeleteUserParams) {
         // questions, asnwers, comments, etc
 
         // get User Question Ids
-        const userQuestionIds = await Question.find({author: user._id}).distinct('_id')
+        // const userQuestionIds = await Question.find({author: user._id}).distinct('_id')
 
         await Question.deleteMany({author : user._id})
 

@@ -58,12 +58,12 @@ const popularTags = [
 const RightSidebar = () => {
   return (
     <section
-      className="background-light900_dark200 light-border custom-scrollbar sticky right-0 top-0 flex h-screen flex-col overflow-y-auto border-l p-6
-        pt-36 shadow-light-300 dark:shadow-none max-sm:hidden w-[350px] max-xl:hidden"
+      className="background-light900_dark200 light-border custom-scrollbar sticky right-0 top-0 flex h-screen w-[350px] flex-col overflow-y-auto border-l
+        p-6 pt-36 shadow-light-300 dark:shadow-none max-xl:hidden max-sm:hidden"
     >
       <div>
         <h3 className="h3-bold text-dark200_light900">Top Questions</h3>
-        <div className="flex w-full flex-col gap-[30px] mt-7">
+        <div className="mt-7 flex w-full flex-col gap-[30px]">
           {hotQuestions.map((question) => (
             <Link
               href={`/questions/${question._id}`}
@@ -87,7 +87,7 @@ const RightSidebar = () => {
       </div>
       <div className="mt-16">
         <h3 className="h3-bold text-dark200_light900">Popular Tags</h3>
-        <div className="flex gap-4 flex-col mt-7">
+        <div className="mt-7 flex flex-col gap-4">
           {popularTags.map((tag) => (
             <RenderTags
               key={tag._id}

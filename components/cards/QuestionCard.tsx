@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import RenderTags from "../shared/RenderTags";
+// import RenderTags from "../shared/RenderTags";
 import Metric from "../shared/Metric";
 import { formatNumber, getTimestamp } from "@/lib/utils";
 
