@@ -27,11 +27,12 @@ const NoResult = ({ title, description, btn, linkQuestion }: PropsTypes) => {
         alt="No Result Illustration"
         width={270}
         height={200}
-        className="block object-contain hidden dark:flex"
+        // eslint-disable-next-line tailwindcss/no-contradicting-classname
+        className="hidden object-contain dark:flex"
       />
       <h2 className="h2-bold text-dark200_light800 mt-8">{title}</h2>
 
-      <p className="body-regular text-center text-dark500_light700 my-3.5 max-w-md">
+      <p className="body-regular text-dark500_light700 my-3.5 max-w-md text-center">
         {description}
       </p>
       <Link href={linkQuestion}>

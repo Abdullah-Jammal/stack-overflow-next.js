@@ -6,7 +6,7 @@ import React from "react";
 interface PropsType {
   title: string;
   imgUrl: string;
-  value: number | string;
+  value: any;
   alt: string;
   textStyle?: string;
   href?: string;
