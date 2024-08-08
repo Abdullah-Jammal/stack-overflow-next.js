@@ -5,34 +5,38 @@ import RenderTags from "../shared/RenderTags";
 import Metric from "../shared/Metric";
 import { formatNumber, getTimestamp } from "@/lib/utils";
 
-interface PropsTypes {
-  _id: number;
+interface QuestionProps {
+  _id: string;
+  title: string;
   tags: {
-    _id: number;
+    _id: string;
     name: string;
   }[];
-  votes: number;
-  views: number;
-  answers: Array<object>;
-  createAt: Date;
   author: {
-    _id: number;
+    _id: string;
     name: string;
     picture: string;
+    clerkId: string;
   };
-  title: string;
+  upvotes: string[];
+  views: number;
+  answers: Array<object>;
+  createdAt: Date;
+  // clerkId?: string | null;
 }
 
+// eslint-disable-next-line no-empty-pattern
 const QuestionCard = ({
+  // clerkId,
   _id,
-  tags,
-  votes,
   title,
+  tags,
+  author,
+  upvotes,
   views,
   answers,
-  createAt,
-  author,
-}: PropsTypes) => {
+  createdAt,
+}: QuestionProps) => {
   return (
     <div className="card-wrapper rounded-[10px] p-9 sm:px-11">
       <div
@@ -43,35 +47,34 @@ const QuestionCard = ({
           className="subtle-regular text-dark400_light700 line-clamp-1
         flex sm:hidden"
         >
-          {getTimestamp(createAt)}
+          {getTimestamp(createdAt)}
         </span>
         <Link href={`/question/${_id}`}>
-          <h3 className="base-semibold sm:h3-semibold line-clamp-1 flex-1 text-dark200_light900">
+          <h3 className="base-semibold sm:h3-semibold text-dark200_light900 line-clamp-1 flex-1">
             {title}
           </h3>
         </Link>
-        {/* if signed in add edit delete action */}
       </div>
 
       <div className="mt-3.5 flex flex-wrap gap-2">
-        {tags.map((tag) => (
-          <RenderTags key={tag._id} name={tag.name} _id={tag._id} />
-        ))}
+        {/* {tags.map((tag) => (
+          <RenderTags key={tag._id} _id={tag._id} name={tag.name} />
+        ))} */}
       </div>
       <div className="flex-between mt-6 w-full flex-wrap gap-3">
         <Metric
           imgUrl="/assets/icons/avatar.svg"
           alt="user"
-          value={author.name}
-          title={`- asked ${getTimestamp(createAt)}`}
-          href={`/profile/${author._id}`}
+          value={author}
+          title={`- asked ${getTimestamp(createdAt)}`}
+          href={`/profile/2`}
           isAuthor
           textStyle="body-medium text-dark400_light700"
         />
         <Metric
           imgUrl="/assets/icons/like.svg"
           alt="Upvotes"
-          value={formatNumber(votes)}
+          value={formatNumber(Number(upvotes))}
           title="Votes"
           textStyle="small-medium text-dark400_light800"
         />

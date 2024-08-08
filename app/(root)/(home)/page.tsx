@@ -5,81 +5,12 @@ import LocalSearchbar from "@/components/shared/Navbar/search/LocalSearchbar";
 import NoResult from "@/components/shared/NoResult";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filter";
+import { getQuestion } from "@/lib/actions/question.action";
 import Link from "next/link";
 
-const questions = [
-  {
-    _id: 1,
-    title: "Cascading Deletes in SQLAlchemy ?",
-    tags: [
-      {
-        _id: 1,
-        name: "python",
-      },
-      {
-        _id: 2,
-        name: "sql",
-      },
-    ],
-    views: 10,
-    votes: 5,
-    author: {
-      _id: 1,
-      name: "John Doe",
-      picture: "john-doe.jpg",
-    },
-    answers: [],
-    createAt: new Date("2024-09-01T12:00:00.000z"),
-  },
-  {
-    _id: 2,
-    title: "How to center a div ?",
-    tags: [
-      {
-        _id: 1,
-        name: "python",
-      },
-      {
-        _id: 2,
-        name: "sql",
-      },
-    ],
-    views: 700000,
-    votes: 2,
-    author: {
-      _id: 1,
-      name: "John Doe",
-      picture: "john-doe.jpg",
-    },
-    answers: [],
-    createAt: new Date("2024-09-01T12:00:00.000z"),
-  },
-  {
-    _id: 3,
-    title: "HTML stand for ............. ?",
-    tags: [
-      {
-        _id: 1,
-        name: "python",
-      },
-      {
-        _id: 2,
-        name: "sql",
-      },
-    ],
-    views: 10,
-    votes: 10000003321,
-    answers: [],
-    author: {
-      _id: 1,
-      name: "John Doe",
-      picture: "john-doe.jpg",
-    },
-    createAt: new Date("2022-09-01T12:00:00.000z"),
-  },
-];
+export default async function Home() {
+  const result = await getQuestion({});
 
-export default function Home() {
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -90,7 +21,7 @@ export default function Home() {
           </Button>
         </Link>
       </div>
-      <div className="flex justify-between mt-11 gap-5 sm:flex-col max-sm:items-center">
+      <div className="mt-11 flex justify-between gap-5 max-sm:items-center sm:flex-col">
         <LocalSearchbar
           route="/"
           iconPosition="left"
@@ -106,18 +37,18 @@ export default function Home() {
       </div>
       <HomeFilters />
       <div className="mt-10 flex w-full flex-col gap-6">
-        {questions.length > 0 ? (
-          questions.map((question) => (
+        {result.questions.length > 0 ? (
+          result.questions.map((question) => (
             <QuestionCard
               key={question._id}
               _id={question._id}
               title={question.title}
-              tags={question.tags}
-              author={question.author}
-              votes={question.votes}
+              author={question.author.name}
+              upvotes={question.upvotes}
+              tags={question.tags.name}
               views={question.views}
               answers={question.answers}
-              createAt={question.createAt}
+              createdAt={question.createdAt}
             />
           ))
         ) : (
