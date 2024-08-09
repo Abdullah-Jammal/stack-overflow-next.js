@@ -51,7 +51,7 @@ const Question = ({ mongoUserId }: Props) => {
         title: values.title,
         content: values.explanation,
         tags: values.tags,
-        author: mongoUserId,
+        author: JSON.parse(mongoUserId),
         path: pathname,
       });
 

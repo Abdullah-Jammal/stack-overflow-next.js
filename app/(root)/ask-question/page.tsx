@@ -1,13 +1,13 @@
 import Question from "@/components/forms/QuestionForm";
 import { getUserById } from "@/lib/actions/user.action";
-// import { auth } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import React from "react";
 
 const Page = async () => {
-  // const { userId } = auth();
+  const { userId } = auth();
 
-  const userId = "123456";
+  // const userId = "123456";
 
   if (!userId) redirect("/sign-in");
 
@@ -18,7 +18,7 @@ const Page = async () => {
       <h1 className="h1-bold text-dark100_light900">Ask a question</h1>
 
       <div className="mt-9">
-        <Question mongoUserId={mongoUser?._id} />
+        <Question mongoUserId={JSON.stringify(mongoUser?._id)} />
       </div>
     </div>
   );

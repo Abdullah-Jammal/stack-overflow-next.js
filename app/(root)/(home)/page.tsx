@@ -11,6 +11,8 @@ import Link from "next/link";
 export default async function Home() {
   const result = await getQuestion({});
 
+  console.log(result);
+
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
@@ -42,8 +44,9 @@ export default async function Home() {
             <QuestionCard
               key={question._id}
               _id={question._id}
+              clerkId={question.clerkId}
               title={question.title}
-              author={question.author.name}
+              author={question.author}
               upvotes={question.upvotes}
               tags={question.tags.name}
               views={question.views}
