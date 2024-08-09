@@ -22,12 +22,12 @@ interface QuestionProps {
   views: number;
   answers: Array<object>;
   createdAt: Date;
-  // clerkId?: string | null;
+  clerkId?: string | null;
 }
 
 // eslint-disable-next-line no-empty-pattern
 const QuestionCard = ({
-  // clerkId,
+  clerkId,
   _id,
   title,
   tags,
@@ -37,6 +37,7 @@ const QuestionCard = ({
   answers,
   createdAt,
 }: QuestionProps) => {
+  console.log(author);
   return (
     <div className="card-wrapper rounded-[10px] p-9 sm:px-11">
       <div
@@ -63,7 +64,7 @@ const QuestionCard = ({
       </div>
       <div className="flex-between mt-6 w-full flex-wrap gap-3">
         <Metric
-          imgUrl="/assets/icons/avatar.svg"
+          imgUrl={"/assets/icons/avatar.svg"}
           alt="user"
           value={author}
           title={`- asked ${getTimestamp(createdAt)}`}
