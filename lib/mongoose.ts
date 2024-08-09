@@ -17,7 +17,7 @@ export const connectToDatabase = async () => {
             dbName: 'devflow2'
         });
         isConnected = true;
-        console.log('MONGO IS CONNECTED');
+        // console.log('MONGO IS CONNECTED');
     } catch (error) {
         console.log('Error', error);
     }
